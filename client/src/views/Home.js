@@ -159,8 +159,8 @@ function ResponsiveDrawer(props) {
       
       <List style={ {backgroundColor:"#dde7ed",height:'1000px',}}>
       {[ <span onClick={() => navigate("/home")}>About Us</span>,
-        "",<span onClick={()=>navigate("/logreg")}>Register</span>
-         ,"",<span onClick={()=>navigate("/logreg")}>Login</span>,"", <span onClick={()=>navigate("/")}>All Dentists</span>, "",<span onClick={()=>navigate("/new")}>Add a Dentist</span>,"",<span onClick={()=>navigate("/home")}>Logout</span>].map((text, index) => (
+        
+         ,"", <span onClick={()=>navigate("/")}>All Dentists</span>, "",<span onClick={()=>navigate("/new")}>Add a Dentist</span>,""].map((text, index) => (
           <ListItem button key={text}>
             <ListItemText primary={text} />
           </ListItem>
@@ -231,8 +231,8 @@ function ResponsiveDrawer(props) {
         </Hidden>
       </nav>
       
-      <main className={classes.content}>
-      <Box component="img" src="clinicvv.jpg" alt="" sx={{ height: "400px", width: "90%",marginBottom:"20px" }} />
+      <main >
+      <Box  className='picture' component="img" src="clinicvv.jpg" alt="" sx={{ height: "450px", width: "80%",marginBottom:"20px" }} />
      
         <div className={classes.toolbar} />
         

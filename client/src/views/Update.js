@@ -5,6 +5,7 @@ import DeleteButton from '../components/DeleteButton';
 import { navigate } from '@reach/router';
 import { Link } from '@reach/router';
 
+
 const Update = (props) => {
     const { id } = props;
     const [dentist, setDentist] = useState("");
@@ -38,9 +39,10 @@ const Update = (props) => {
     return (
         <div>
            
-            
+  
         {loaded && (
             <>
+    
                 <Form
                     onSubmitProp={updatedentist}
                     initialFname={dentist.fname}
@@ -49,7 +51,9 @@ const Update = (props) => {
 
                     initialLocation={dentist.location}
                     initialServices={dentist.services}
-                    initialWorkingHours={dentist.workingHours}
+                    intialFrom={dentist.from}
+                    intialTo={dentist.to}
+
                     initialPhoneNumber={dentist.phoneNumber}
                     initialYearsOfExperience={dentist.yearsOfExperience}
 

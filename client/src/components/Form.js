@@ -23,46 +23,49 @@ import Header from './Header'
 const Form=(props) =>{
 
 
-const cityName=["","Nablus","Jenin","Tulkarm","Hebrew","Jerico","Ramallah","Jerusalem","Qalqilia","Bethlehem","Salfit"];
-    const { initialFname,initialLname,initialLocation, initialServices,initialPhoneNumber,initialWorkingHours,initialYearsOfExperience, onSubmitProp,initialCity } = props;
+const cityName=["","Nablus","Jenin","Tulkarm","Hebrew","Jerico","Ramallah","Jerusalem"," Qalqilya","Bethlehem","Salfit"];
+    const { initialFname,initialLname,initialLocation, initialServices,initialPhoneNumber,initialFrom,initialTo,initialYearsOfExperience, onSubmitProp,initialCity } = props;
     const [fname, setFname] = useState(initialFname);
     const [lname, setLname] = useState(initialLname);
     const [city,setCity] = useState(initialCity);
     const [location, setLocation] = useState(initialLocation);
     const [services, setServices] = useState(initialServices);
-    const [workingHours, setWorkingHours] = useState(initialWorkingHours);
+    const [from, setFrom] = useState(initialFrom);
+    const [to, setTo] = useState(initialTo);
+
     const [phoneNumber, setPhoneNumber] = useState(initialPhoneNumber);
     const [yearsOfExperience, setYearsOfExperience] = useState(initialYearsOfExperience);
 
 
-    // const [errors, setErrors] = useState([]); no need for this as i sent props from one of the files in the views
    
 
     const onSubmitHandler = e => {
         e.preventDefault();
-        onSubmitProp({fname,lname,city,location,services,workingHours,phoneNumber,yearsOfExperience});
+        onSubmitProp({fname,lname,city,location,services,from,to,phoneNumber,yearsOfExperience});
     }
     <Form onSubmitProp={props.createDentist} initialFname="" initialLname="" initialLocation="" initialServices="" 
-    initialWorkingHours="" initialPhoneNumber="" initialYearsOfExperience="" initialCity=""/>
+    initialFrom=""   initialTo="" initialPhoneNumber="" initialYearsOfExperience="" initialCity=""/>
 
 const theme = createTheme();
 
 
 
   return (
-    <ThemeProvider  theme={theme}>
+  <div className='pict'  >
+    <ThemeProvider    theme={theme}>
       <Container  component="main" maxWidth="xs" >
-    <Header/>
+      <Header/>
 
         <form onSubmit={onSubmitHandler} >
+        {props.errors.map((err, index) => <p  style={{color:"red"}} key={index}>*{err}</p>)}
        
-          <Typography component="h1" variant="h5" >
-            Add Dentist
-          </Typography>
+        <Typography component="h1" variant="h5" >
+    Add Dentist
+  </Typography> 
             <TextField
             style={{backgroundColor:"#dde7ed"}}
               margin="normal"
-              required
+              // required
               fullWidth
               id="fname"
               label="First Name"
@@ -75,7 +78,7 @@ const theme = createTheme();
 <TextField
 style={{backgroundColor:"rgb(188 221 240)"}}
               margin="normal"
-              required
+              // required
               fullWidth
               id="lname"
               label="last Name"
@@ -119,7 +122,7 @@ style={{backgroundColor:"rgb(188 221 240)"}}
 <TextField
 style={{backgroundColor:"#dde7ed"}}
               margin="normal"
-              required
+              // required
               fullWidth
               id="location"
               label="location"
@@ -132,20 +135,64 @@ style={{backgroundColor:"#dde7ed"}}
 <TextField
 style={{backgroundColor:"rgb(188 221 240)"}}
               margin="normal"
-              required
+              // required
               fullWidth
-              id="workingHours"
-              label="Working Hours "
-              name="workingHours"
+              id="from"
+              label="Start Time"
+              name="from"
+              type="time"
             //   autoComplete="workingHours"
               autoFocus
-              onChange={(e)=>setWorkingHours(e.target.value)} value={workingHours}
+              onChange={(e)=>setFrom(e.target.value)} value={from}
+              
+            />
+
+
+            
+            <TextField
+style={{backgroundColor:"rgb(188 221 240)"}}
+              margin="normal"
+              // required
+              fullWidth
+              id="to"
+              label="End Time "
+              name="to"
+              type="time"
+            //   autoComplete="workingHours"
+              autoFocus
+              onChange={(e)=>setTo(e.target.value)} value={to}
+              
+            />
+            
+            <TextField
+style={{backgroundColor:"rgb(240 205 205)"}}
+              margin="normal"
+              // required
+              fullWidth
+              id="services"
+              label="services"
+              name="services"
+            //   autoComplete="yearsOfExperience"
+              autoFocus
+              onChange={(e)=>setServices(e.target.value)} value={services}
+            />
+            <TextField
+style={{backgroundColor:"#dde7ed"}}
+              margin="normal"
+              // required
+              fullWidth
+              id="phoneNumber"
+              label="Phone Number "
+              name="phoneNumber"
+            //   autoComplete="yearsOfExperience"
+              autoFocus
+              onChange={(e)=>setPhoneNumber(e.target.value)} value={phoneNumber}
             />
 
 <TextField
-style={{backgroundColor:"rgb(240 205 205)"}}
+style={{backgroundColor:"rgb(188 221 240)"}}
               margin="normal"
-              required
+              // required
               fullWidth
               id="yearsOfExperience"
               label="Years of Experience "
@@ -171,7 +218,7 @@ style={{backgroundColor:"rgb(240 205 205)"}}
       </Container>
 
     </ThemeProvider>
-
+</div>
   );
 }
 

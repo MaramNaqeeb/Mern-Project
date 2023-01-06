@@ -3,6 +3,7 @@ import Form from '../components/Form';
 import { navigate } from '@reach/router';
 import { Link } from '@reach/router';
 
+
 import  { useEffect, useState } from 'react';
 import axios from 'axios';
 const New = (props) => {
@@ -26,20 +27,21 @@ const New = (props) => {
                 setDentists([...dentists, res.data],navigate("/"));
             })
             .catch(err=>{
-                // const errorResponse = err.response.data.errors; 
-                // const errorArr = []; 
-                // for (const key of Object.keys(errorResponse)) { 
-                //     errorArr.push(errorResponse[key].message)
-                // }
+                const errorResponse = err.response.data.errors; 
+                const errorArr = []; 
+                for (const key of Object.keys(errorResponse)) { 
+                    errorArr.push(errorResponse[key].message)
+                }
                 
-                // setErrors(errorArr);
+                setErrors(errorArr);
             })
             
     }
   return (
+  
     <div>
-            
-       <Form onSubmitProp={creatDentist} initialFname="" initialLname="" initialLocation="" initialServices="" initialWorkingHours="" initialPhoneNumber="" initialYearsOfExperience="" initialCity=""  errors={errors} />
+
+       <Form onSubmitProp={creatDentist} initialFname="" initialLname="" initialLocation="" initialServices="" initialFrom="" initialTo="" initialPhoneNumber="" initialYearsOfExperience="" initialCity=""  errors={errors} />
     </div>
   )
 }

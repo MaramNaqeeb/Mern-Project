@@ -1,40 +1,70 @@
-import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Avatar from '@material-ui/core/Avatar';
-import Header from '../components/Header'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
+import { Link } from '@reach/router';
+import { navigate } from '@reach/router';
+import { Card } from '@material-ui/core';
 
-export default function MediaControlCard() {
-  const theme = useTheme();
+    
+const Detail = (props) => {
+    const { id } = props;
 
-  return (
-    <div>
-    <Header></Header>
+    const [dentist, setDentist] = useState("")
+    const [loaded, setLoaded] = useState(false)
 
-    <Card sx={{ display: 'flex',width:"600px",height:"300px",marginLeft:"500px" }}>
-       
-      
-        <CardContent sx={{ flex: '1 0 auto' }}>
-          <Typography component="div" variant="h5">
-            Live From Space
-          </Typography>
-          <Typography variant="subtitle1" color="text.secondary" component="div">
-            Mac Miller
-          </Typography>
-        </CardContent>
-     
-      <CardMedia
-        component="img"
-        sx={{ width: 151 }}
-        image="/toothe4.jpg"
-        alt="Live from space album cover"
-      />
-    </Card>
-    </div>
-  );
+    useEffect(() => {
+        axios.get('http://localhost:8000/api/dentists/'+props.id)
+            .then(res => {setDentist(res.data);console.log(res.data);setLoaded(true);})
+            .catch(err => console.error(err));
+    }, [props.id]);
+
+    const recommenedDentist=(id)=>{
+    
+        axios.put('http://localhost:8000/api/dentists/' + props.id,{recommened:dentist.recommened+1})
+        .then(res=>{
+            setDentist(res.data)})
+            navigate("/")
+            .catch(err => console.error(err));
+             
+     }
+                
+  
+    
+    if(loaded){
+    return (
+
+       (<div>
+
+<Card>
+        <h1>This is content within my card</h1>
+</Card>
+            
+            <p>Name: {dentist.fname} {dentist.lname} </p>
+            <p>City: {dentist.city}</p>
+            <p>Location: {dentist.location}</p>
+            <p>Services: {dentist.services}</p>
+            <p>Working Hours: {dentist.workingHours}</p>
+            <p>Phone Number: {dentist.phoneNumber}</p>
+           
+            <p>Recommened: {dentist.recommened}</p>
+
+
+
+            <p>Years of Experience: {dentist.yearsOfExperience}</p>
+            <button onClick={(e)=>recommenedDentist(dentist._id)}>Recommened</button>
+
+
+
+
+            <Link to={"/edit/" + dentist._id }><button>  
+           Update </button></Link>
+
+
+
+           
+
+        </div>)
+    )
 }
+else{return (<div></div>)}
+}
+export default Detail;

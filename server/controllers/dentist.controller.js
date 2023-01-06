@@ -1,12 +1,13 @@
 const {Dentist } = require('../models/dentist.model');
 
 module.exports.createDentist = (request, response) => {
-    const {fname,lname,location,workingHours,phoneNumber,services,yearsOfExperience,recommened,doNotRecommened,rate,city} = request.body;
+    const {fname,lname,location,from,to,phoneNumber,services,yearsOfExperience,recommened,doNotRecommened,rate,city} = request.body;
     Dentist.create({
         fname,
         lname,
         location,
-        workingHours,
+        from,
+        to,
         phoneNumber,
         services,
         yearsOfExperience,
