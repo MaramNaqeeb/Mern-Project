@@ -1,6 +1,8 @@
 # Mern-Project
 ## About The Project
-This Project is created by me only because I wanted to challenge myself and know if I could create a project myself. I used React and Material UI for the front end and express for the backend. 
+This Project is created by me only because I wanted to challenge myself and know if I could create a project myself. I used React and Material UI for the frontend and express for the backend. 
+
+
 
 ![dentistphoto](https://github.com/MaramNaqeeb/Mern-Project/assets/111737471/1248e32c-4559-4285-83d3-2cb3dfca0f21)
 
