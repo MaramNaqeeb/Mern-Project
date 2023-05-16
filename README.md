@@ -1,6 +1,7 @@
 # Mern-Project
 ## About The Project
-This Project is created by me only because I wanted to challenge myself and know if I could create a project myself. I used React and Material UI for the frontend and express for the backend. 
+This project is about an application that is mainly used to facilitate the searching process for a good dentist in the cities of Palestine.
+It is created by me only because I wanted to challenge myself and know if I could create a project myself. I used React and Material UI for the frontend and express for the backend. 
 
 
 
