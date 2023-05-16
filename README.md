@@ -6,8 +6,8 @@ This Project is created by me only because I wanted to challenge myself and know
 
 
 ## Used Technologies
-*React
-*JavaScript
+-React
+-JavaScript
 *Express
 *Mern
 *Material UI
